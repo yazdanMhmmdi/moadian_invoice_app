@@ -1,0 +1,10 @@
+{
+        "compilerOptions": {
+        "esModuleInterop": false,
+        "allowSyntheticDefaultImports": true,
+        "module": "CommonJS",        // Output CommonJS modules
+        "target": "es6",
+        "moduleResolution": "node", 
+        "skipLibCheck": true,        // Speed up compilation
+    }
+  }

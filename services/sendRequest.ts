@@ -1,22 +1,25 @@
+import axios, { AxiosResponse } from "axios";
 
-import axios from 'axios';
+async function sendRequest(url, method = "GET", token = "", body = []) {
+  var result: AxiosResponse;
+  const headers = {
+    "Content-Type": "application/json",
+    accept: "*/*",
+    Authorization: `Bearer ${token}`,
+  };
+  if (method == "GET") {
+    result = await axios.get(url, { headers, validateStatus: () => true });
+  } else {
+    const postData = [body];
 
-async function sendRequest(url, method = 'GET', token = '', body = []) {
-  var  result
-    const headers = {
-        'Content-Type': 'application/json',
-        "accept": "*/*",
-        "Authorization": `Bearer ${token}`
-    };
-    if (method == "GET") {
-        result = await  axios.get(url, { headers }) 
-    } else {
-        const postData = [body];
+    result = await axios.post(url, postData, {
+      headers,
+      validateStatus: () => true,
+    });
+  }
+  console.log(JSON.stringify(result.data, null, 2));
 
-        result = await axios.post(url, postData, { headers }) 
-    }
- 
-    return result.data
+  return result.data;
 }
 
 // async function sendRequest(url, method = 'GET', token = '', body = []) {
@@ -34,7 +37,7 @@ async function sendRequest(url, method = 'GET', token = '', body = []) {
 
 //         data['body']=[JSON.stringify(body)]
 //     }
-  
+
 //     const response = await fetch(url, data);
 
 //     const result = await response.json();
@@ -42,4 +45,4 @@ async function sendRequest(url, method = 'GET', token = '', body = []) {
 //     return result
 // }
 
-export default sendRequest
+export default sendRequest;

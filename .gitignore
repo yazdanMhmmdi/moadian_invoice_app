@@ -43,3 +43,8 @@ Thumbs.db
 public.key
 private.key
 certificate.txt
+
+
+#private files
+Private.txt
+HekmatPardazanAseman.crt

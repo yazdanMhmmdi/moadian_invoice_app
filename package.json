@@ -5,7 +5,17 @@
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "dev": "tsx watch example.ts"
+    "dev": "tsx watch --inspect example.ts",
+    "build": "npm-run-all build:*",
+    "build:1": "tsc example.ts --outDir dist",
+    "build:2": "copyfiles node_modules/*/** dist",
+    "build:3": "copyfiles Private.txt dist",
+    "build:4": "copyfiles HekmatPardazanAseman.crt dist",
+    "build:5": "copyfiles document.xlsx dist",
+    "build:6": "webpack --config webpack.config.js",
+
+    "build:7": "npm run buildPkg",
+    "buildPkg": "pkg dist/bundle.js -C Gzip -t node22-win-x64 --out-path ./dist"
   },
   "keywords": [
     "moadian",
@@ -21,17 +31,28 @@
   "dependencies": {
     "axios": "^1.6.8",
     "cdigit": "^2.2.3",
+    "exceljs": "^4.4.0",
     "jose": "^5.2.3",
     "moment": "^2.30.1",
-    "uuid": "^9.0.1"
+    "npm-run-all": "^4.1.5",
+    "uuid": "^9.0.1",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
-    "@types/node": "^20.11.30",
+    "@types/node": "^20.19.22",
+    "@types/xlsx": "^0.0.35",
+    "ts-node": "^10.9.2",
     "tsx": "^4.7.2",
-    "typescript": "^5.4.3"
+    "typescript": "^5.9.3",
+    "webpack": "^5.102.1",
+    "webpack-cli": "^6.0.1"
   },
+  "bin": "./example.ts",
   "bugs": {
     "url": "https://github.com/imantalebi/moadian/issues"
   },
-  "homepage": "https://github.com/imantalebi/moadian#readme"
+  "homepage": "https://github.com/imantalebi/moadian#readme",
+  "pkg": {
+ 
+  }
 }
