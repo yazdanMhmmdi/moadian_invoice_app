@@ -10,7 +10,7 @@
     "build:1": "tsc example.ts --outDir dist",
     "build:2": "copyfiles node_modules/*/** dist",
     "build:3": "copyfiles Private.txt dist",
-    "build:4": "copyfiles HekmatPardazanAseman.crt dist",
+    "build:4": "copyfiles HPA.crt dist",
     "build:5": "copyfiles document.xlsx dist",
     "build:6": "webpack --config webpack.config.js",
 

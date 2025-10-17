@@ -16,7 +16,7 @@ import { readExcelToJson, updateNumberColumn } from "./services/readExcelFile";
 var clientId = "A2HOHD";
 
 var privateKey = fs.readFileSync("Private.txt", "utf-8").toString();
-var certificate = fs.readFileSync("HekmatPardazanAseman.crt", "utf-8");
+var certificate = fs.readFileSync("HPA.crt", "utf-8");
 const send = new moadian(clientId, privateKey, certificate, true);
 
 var dax = readExcelToJson("document.xlsx");
